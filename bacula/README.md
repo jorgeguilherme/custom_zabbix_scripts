@@ -130,3 +130,8 @@ Go back to the Item Prototype `Job Status of Job $1` you created previously and 
 mapping you created above (`Bacula Job Status`).
 
 That's it!
+
+# Bonus
+
+For a extra dose of awesomeness, make your Zabbix notify you on Telegram!
+[Check this out](https://github.com/GabrielRF/Zabbix-Telegram-Notification)
