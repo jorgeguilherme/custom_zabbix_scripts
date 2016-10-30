@@ -30,6 +30,16 @@ Bacula 7.0;
 Choose a directory to put the scripts in and a directory to save the data to be read by `zabbix` user.
 Here, I chose `/usr/share/zabbix-agent` for both.
 Download the contents of `scripts` folder to the chosen directory.
+And don't forget to set the owner to `zabbix` and also the execution permissions:
+
+```bash
+$ cd /usr/share/zabbix-agent/
+$ sudo chown zabbix *.sh
+$ sudo chmod +x *.sh
+$ sudo chown zabbix *.py
+$ sudo chmod +x *.py
+
+```
 
 The, create the Cron jobs accordingly:
 
