@@ -133,5 +133,5 @@ That's it!
 
 # Bonus
 
-For a extra dose of awesomeness, make your Zabbix notify you on Telegram!
+For an extra dose of awesomeness, make your Zabbix notify you on Telegram!
 [Check this out](https://github.com/GabrielRF/Zabbix-Telegram-Notification)
