@@ -3,7 +3,7 @@
 These project was tested with Bacula Director 7.0.5 from Ubuntu 16.04 official repositories.
 Python is a pre-requisite.
 
-For this, I considered that the jobs are executed only once a day.
+It was considered that the jobs are executed only once a day.
 If you schedule your jobs to be executed twice, the discovery rules will make them appear twice.
 
 # Introduction
