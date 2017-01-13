@@ -3,14 +3,14 @@
 These project was tested with Bacula Director 7.0.5 from Ubuntu 16.04 official repositories.
 Python is a pre-requisite.
 
-It was considered that the jobs are executed only once a day.
+It is considered that the jobs are executed only once a day.
 If you schedule your jobs to be executed twice, the discovery rules will make them appear twice.
 
 # Introduction
 
 This project includes several scripts that must be executed as cron jobs.
-This is because Bacula Console (`bconsole`) is executed with root privileges. Even if we try to run `bconsole` as
-the `zabbix` user, we must grant read access do `bconsole.conf` configuration file, which includes the plain-text
+This is because Bacula Console (`bconsole`) runs with root privileges. Even if we try to run `bconsole` as
+the `zabbix` user, we must grant read access to `bconsole.conf` configuration file, which includes the plain-text
 password for communication with Bacula Director.
 
 So, there are three scripts that are executed from Cron jobs. They run as `root` user and save the data in text files that
@@ -19,7 +19,7 @@ The scripts are listed below with their respective functions:
 
 * `bacula_numjobs.sh` - Returns the number of jobs scheduled for **today**;
 * `bacula_status_scheduled.sh` - Returns the status of **Incremental** and **Full** jobs scheduled for **today**. This one
-just calls `status scheduled days=1` from `bconsole` and filters the output. Note that `status scheduled` was introduced with
+just calls `status scheduled days=1` from `bconsole` and filters the output. Note that `status scheduled` was introduced in
 Bacula 7.0;
 * `bacula_list_jobs.sh` - Just runs `list jobs` in `bconsole`.
 
@@ -27,10 +27,9 @@ Bacula 7.0;
 
 ## Scripts
 
-Choose a directory to put the scripts in and a directory to save the data to be read by `zabbix` user.
+Choose a directory to put the scripts inside and a directory to save the data to be read by `zabbix` user.
 Here, I chose `/usr/share/zabbix-agent` for both.
-Download the contents of `scripts` folder to the chosen directory.
-And don't forget to set the owner to `zabbix` and also the execution permissions:
+Download the contents of the `scripts` folder to the chosen directory, and don't forget to set the owner to `zabbix` and also the execution permissions:
 
 ```bash
 $ cd /usr/share/zabbix-agent/
@@ -41,7 +40,7 @@ $ sudo chmod +x *.py
 
 ```
 
-The, create the Cron jobs accordingly:
+Then, create the Cron jobs accordingly:
 
 ```bash
 $ sudo crontab -e -u root
@@ -70,7 +69,7 @@ $ sudo systemctl restart zabbix-agent.service
 Now, we just need to add the items do the appropriate host on Zabbix.
 
 Go to `Configuration -> Hosts`, select the host and select `Discovery Rules`.
-Create a new discovery rule (you name it, I used *Bacula Job Discovery*) with the fields:
+Create a new discovery rule (you name it, I used *Bacula Job Discovery*) with the following fields:
 
 * Name: `Bacula Job Discovery`
 * Type: Zabbix agent
